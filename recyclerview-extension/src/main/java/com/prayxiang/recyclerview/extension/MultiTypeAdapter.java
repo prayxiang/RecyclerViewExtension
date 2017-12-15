@@ -46,18 +46,10 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
         }
     }
 
-    public interface TypeStrategy {
-        int getItemViewType(int position);
-    }
 
-    private MultiTypePool mPool = new MultiTypePool();
+    MultiTypePool mPool = new MultiTypePool();
     private DefaultStrategyAdapter mStrategyAdapter;
-    private TypeStrategy mTypeStrategy = new TypeStrategy() {
-        @Override
-        public int getItemViewType(int position) {
-            return getItem(position).getClass().hashCode();
-        }
-    };
+    TypeStrategy mTypeStrategy;
 
     public MultiTypeAdapter() {
         setStrategy(new DefaultStrategyAdapter());
