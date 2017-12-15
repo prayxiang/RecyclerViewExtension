@@ -3,10 +3,11 @@
   <groupId>com.prayxiang</groupId>
   <artifactId>recyclerview-extension</artifactId>
   <versioning>
-    <release>1.0.0</release>
+    <release>1.0.1</release>
     <versions>
       <version>1.0.0</version>
+      <version>1.0.1</version>
     </versions>
-    <lastUpdated>20171215085536</lastUpdated>
+    <lastUpdated>20171215091420</lastUpdated>
   </versioning>
 </metadata>
