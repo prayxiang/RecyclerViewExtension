@@ -66,4 +66,13 @@ public class BaseAdapter extends MultiTypeAdapter {
     public void addFixedViewBinder(Object o) {
         strategy.addFixedViewBinder(o);
     }
+
+
+    public void setEnableEmpty(boolean enableEmpty) {
+        strategy.setEnableEmpty(enableEmpty);
+    }
+
+    public BaseStrategyAdapter getStrategy() {
+        return strategy;
+    }
 }

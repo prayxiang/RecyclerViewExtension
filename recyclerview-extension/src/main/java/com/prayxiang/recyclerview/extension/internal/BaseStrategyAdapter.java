@@ -52,6 +52,7 @@ public class BaseStrategyAdapter extends DefaultStrategyAdapter {
     }
 
 
+
     public BaseStrategyAdapter() {
         items = new ArrayList<>();
     }
