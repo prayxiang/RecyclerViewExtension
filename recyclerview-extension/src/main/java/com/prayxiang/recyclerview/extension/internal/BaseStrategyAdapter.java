@@ -3,6 +3,7 @@ package com.prayxiang.recyclerview.extension.internal;
 import android.support.v7.widget.RecyclerView;
 
 import com.prayxiang.recyclerview.extension.LoadListener;
+import com.prayxiang.recyclerview.extension.tools.Empty;
 import com.prayxiang.recyclerview.extension.tools.LoadMoreScrollListener;
 import com.prayxiang.recyclerview.extension.tools.LoaderMore;
 
@@ -13,10 +14,13 @@ import java.util.Collections;
 
 public class BaseStrategyAdapter extends DefaultStrategyAdapter {
     private LoaderMore loaderMore = new LoaderMore();
+    private Empty empty = new Empty();
     private int fixedOffset;
     private int footOffset;
+    private int emptyOffset;
     private int limit = 1;
     private boolean enableLoadMore = true;
+    private boolean enableEmpty = true;
     private LoadListener loadListener;
 
     private LoadMoreScrollListener listener = new LoadMoreScrollListener(loaderMore);
@@ -73,13 +77,24 @@ public class BaseStrategyAdapter extends DefaultStrategyAdapter {
         loaderMore.reset();
         clear();
         footOffset = 0;
+        if (collection.size() == 0) {
+            if (enableEmpty) {
+                items.add(empty);
+                return;
+            }
+        }
         items.addAll(collection);
         if (getDataSize() >= limit && enableLoadMore) {
+            loaderMore.setActive(true);
             items.add(loaderMore);
             footOffset++;
         }
     }
 
+
+    public void setEnableEmpty(boolean enableEmpty) {
+        this.enableEmpty = enableEmpty;
+    }
 
     @Override
     public void insert(Collection<?> collection) {

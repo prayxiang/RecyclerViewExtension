@@ -63,4 +63,7 @@ public class BaseAdapter extends MultiTypeAdapter {
     public void setEnableLoadMore(boolean enableLoadMore) {
         strategy.setEnableLoadMore(enableLoadMore);
     }
+    public void addFixedViewBinder(Object o) {
+        strategy.addFixedViewBinder(o);
+    }
 }

@@ -60,6 +60,7 @@ public class LoaderMore extends BaseObservable {
         } else {
             currentPage = 1;
         }
+        active = false;
     }
 
     public boolean isActive() {

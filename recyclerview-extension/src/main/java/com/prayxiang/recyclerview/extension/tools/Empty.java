@@ -7,6 +7,10 @@ package com.prayxiang.recyclerview.extension.tools;
 public class Empty {
     public boolean mFillViewPort;
 
+    public boolean isFillViewPort() {
+        return mFillViewPort;
+    }
+
     public void setFillViewPort(boolean fillViewPort) {
         this.mFillViewPort = fillViewPort;
     }
