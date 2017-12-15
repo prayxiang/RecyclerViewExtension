@@ -1,5 +1,22 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+ext {
+    PUBLISH_GROUP_ID = "${PUBLISH_GROUP_ID}"
+    PUBLISH_ARTIFACT_ID = "${PUBLISH_ARTIFACT_ID}"
+    PUBLISH_VERSION = "${APP_VERSION_NAME}"
+}
 
+uploadArchives {
+    repositories.mavenDeployer {
+        def deployPath = file(getProperty('aar.path'))
+        repository(url: "file://${deployPath.absolutePath}")
+        pom.project {
+            groupId project.PUBLISH_GROUP_ID
+            artifactId project.PUBLISH_ARTIFACT_ID
+            version project.PUBLISH_VERSION
+        }
+    }
+}
 android {
     compileSdkVersion 26
 
