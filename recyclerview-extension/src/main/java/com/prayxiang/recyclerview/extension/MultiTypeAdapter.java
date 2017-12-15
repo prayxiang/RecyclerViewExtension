@@ -22,6 +22,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 
 import com.prayxiang.recyclerview.extension.internal.DefaultStrategyAdapter;
@@ -50,7 +51,7 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
     }
 
     private MultiTypePool mPool = new MultiTypePool();
-    private StrategyAdapter mStrategyAdapter;
+    private DefaultStrategyAdapter mStrategyAdapter;
     private TypeStrategy mTypeStrategy = new TypeStrategy() {
         @Override
         public int getItemViewType(int position) {
@@ -62,7 +63,7 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
         setStrategy(new DefaultStrategyAdapter());
     }
 
-    public void setStrategy(StrategyAdapter strategyAdapter) {
+    public void setStrategy(DefaultStrategyAdapter strategyAdapter) {
         if (mStrategyAdapter != null) {
             mStrategyAdapter.onDetachAdapter(this);
         }
@@ -72,6 +73,13 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
 
     private LayoutInflater inflater;
 
+    public List<?> getItems() {
+        return mStrategyAdapter.getItems();
+    }
+
+    public void setItems(List<?> items) {
+        mStrategyAdapter.setItems(items);
+    }
 
     @Override
     @CallSuper
