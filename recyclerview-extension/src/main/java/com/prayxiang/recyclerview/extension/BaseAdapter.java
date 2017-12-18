@@ -6,6 +6,7 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 
 import com.prayxiang.recyclerview.extension.internal.BaseStrategyAdapter;
+import com.prayxiang.recyclerview.extension.tools.LoaderMore;
 
 /**
  * Created by prayxiang on 2017/11/24.
@@ -74,5 +75,8 @@ public class BaseAdapter extends MultiTypeAdapter {
 
     public BaseStrategyAdapter getStrategy() {
         return strategy;
+    }
+    public void loadFail(){
+        strategy.loadFail();
     }
 }

@@ -52,6 +52,9 @@ public class BaseStrategyAdapter extends DefaultStrategyAdapter {
     }
 
 
+    public void loadFail(){
+        loaderMore.setLoadMoreStatus(LoaderMore.STATUS_FAIL);
+    }
 
     public BaseStrategyAdapter() {
         items = new ArrayList<>();
