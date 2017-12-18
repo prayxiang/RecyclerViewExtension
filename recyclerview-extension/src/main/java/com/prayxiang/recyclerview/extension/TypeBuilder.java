@@ -23,12 +23,12 @@ public class TypeBuilder<T> {
         return this;
     }
 
-    public TypeBuilder<T> add(int type, ViewBinder v) {
+    public TypeBuilder<T> addViewBinder(int type, ViewBinder v) {
         map.put(type, v);
         return this;
     }
 
-    public TypeBuilder<T> add(Class cls, ViewBinder v) {
+    public TypeBuilder<T> addViewBinder(Class cls, ViewBinder v) {
         map.put(cls.hashCode(), v);
         return this;
     }
