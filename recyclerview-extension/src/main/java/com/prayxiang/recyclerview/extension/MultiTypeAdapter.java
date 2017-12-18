@@ -158,6 +158,11 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
         mStrategyAdapter.insert(items);
     }
 
+    @Override
+    public void insert(int position, Collection<?> collection) {
+        mStrategyAdapter.insert(position, collection);
+    }
+
     //    public MultiTypeAdapter(Object... items) {
 //        mStrategyAdapter.display(Arrays.asList(items));
 //    }

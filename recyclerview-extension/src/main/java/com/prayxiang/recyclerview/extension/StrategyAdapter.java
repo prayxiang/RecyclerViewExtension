@@ -13,6 +13,7 @@ public interface StrategyAdapter {
     void replace(Collection<?> collection);
 
     void insert(Collection<?> collection);
+    void insert(int position,Collection<?> collection);
 
     void display(Collection<?> collection);
 

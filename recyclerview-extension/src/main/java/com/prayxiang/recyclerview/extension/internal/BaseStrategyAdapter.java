@@ -115,6 +115,11 @@ public class BaseStrategyAdapter extends DefaultStrategyAdapter {
     }
 
     @Override
+    public void insert(int position, Collection<?> collection) {
+        items.addAll(position + fixedOffset, collection);
+    }
+
+    @Override
     public void display(Collection<?> collection) {
         if (getDataSize() == 0) {
             replace(collection);
@@ -145,7 +150,6 @@ public class BaseStrategyAdapter extends DefaultStrategyAdapter {
     public void setLimit(int limit) {
         this.limit = limit;
     }
-
 
 
 }

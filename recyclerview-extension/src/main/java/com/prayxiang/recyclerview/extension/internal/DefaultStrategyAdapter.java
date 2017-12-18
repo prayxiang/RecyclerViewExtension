@@ -49,6 +49,11 @@ public class DefaultStrategyAdapter implements StrategyAdapter {
     }
 
     @Override
+    public void insert(int position, Collection<?> collection) {
+        throw new RuntimeException("unSupport operation");
+    }
+
+    @Override
     public void display(Collection<?> collection) {
         replace(collection);
     }
