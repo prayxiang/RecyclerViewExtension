@@ -52,7 +52,7 @@ public class BaseStrategyAdapter extends DefaultStrategyAdapter {
     }
 
 
-    public void loadFail(){
+    public void loadFail() {
         loaderMore.setLoadMoreStatus(LoaderMore.STATUS_FAIL);
     }
 
@@ -145,4 +145,7 @@ public class BaseStrategyAdapter extends DefaultStrategyAdapter {
     public void setLimit(int limit) {
         this.limit = limit;
     }
+
+
+
 }

@@ -79,4 +79,8 @@ public class BaseAdapter extends MultiTypeAdapter {
     public void loadFail(){
         strategy.loadFail();
     }
+
+    public <T> T getLastItem() {
+       return strategy.getLastItem();
+    }
 }
