@@ -22,18 +22,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-
-import com.prayxiang.recyclerview.extension.internal.DefaultStrategyAdapter;
-import com.prayxiang.recyclerview.extension.internal.MultiTypePool;
+import com.prayxiang.recyclerview.extension.internal.MultiTypeProvider;
 import com.prayxiang.recyclerview.extension.tools.OnItemClickListener;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
-public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implements StrategyAdapter {
+public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> {
     private OnItemClickListener onItemOnClickListener;
 
     public void setOnItemOnClickListener(OnItemClickListener<?> onItemOnClickListener) {
@@ -47,31 +45,55 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
     }
 
 
-    MultiTypePool mPool = new MultiTypePool();
-    private DefaultStrategyAdapter mStrategyAdapter;
+    MultiTypeProvider mPool = new MultiTypeProvider();
+
+
+    protected List<Object> items = Collections.emptyList();
+
+
     TypeStrategy mTypeStrategy;
 
     public MultiTypeAdapter() {
-        setStrategy(new DefaultStrategyAdapter());
+
     }
 
-    public void setStrategy(DefaultStrategyAdapter strategyAdapter) {
-        if (mStrategyAdapter != null) {
-            mStrategyAdapter.onDetachAdapter(this);
-        }
-        this.mStrategyAdapter = strategyAdapter;
-        strategyAdapter.onAttachAdapter(this);
-    }
 
     private LayoutInflater inflater;
 
     public List<?> getItems() {
-        return mStrategyAdapter.getItems();
+        return items;
     }
 
     public void setItems(List<?> items) {
-        mStrategyAdapter.setItems(items);
+        this.items = (List<Object>) items;
     }
+
+
+
+    public void replace(Collection<?> collection) {
+        if (collection == null) {
+            collection = Collections.emptyList();
+        }
+        items = (List<Object>) collection;
+        notifyDataSetChanged();
+
+    }
+
+
+    public void insert(Collection<?> collection) {
+        throw new RuntimeException("unSupport operation");
+    }
+
+
+    public void insert(int position, Collection<?> collection) {
+        throw new RuntimeException("unSupport operation");
+    }
+
+
+    public void display(Collection<?> collection) {
+        replace(collection);
+    }
+
 
     @Override
     @CallSuper
@@ -97,10 +119,6 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
         binder.onBindViewHolder(holder, payloads);
     }
 
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        mStrategyAdapter.onAttachedToRecyclerView(recyclerView);
-    }
 
     @Override
     public void onViewAttachedToWindow(ViewHolder holder) {
@@ -116,10 +134,6 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
         binder.onViewDetachedFromWindow(holder);
     }
 
-    @Override
-    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
-        mStrategyAdapter.onDetachedFromRecyclerView(recyclerView);
-    }
 
     @Override
     public int getItemViewType(int position) {
@@ -128,48 +142,22 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> implement
 
 
     public int getItemCount() {
-        return mStrategyAdapter.getItemCount();
+        return items.size();
     }
 
 
     public Object getItem(int position) {
-        return mStrategyAdapter.getItem(position);
+        return items.get(position);
     }
 
-
-    public void replace(Collection<?> collection) {
-        mStrategyAdapter.replace(collection);
-    }
-
-    public void display(Collection<?> items) {
-        mStrategyAdapter.display(items);
-    }
-
-    public void onAttachAdapter(MultiTypeAdapter adapter) {
-        mStrategyAdapter.onAttachAdapter(this);
-    }
-
-    public void onDetachAdapter(MultiTypeAdapter adapter) {
-        mStrategyAdapter.onDetachAdapter(this);
-    }
-
-
-    public void insert(Collection<?> items) {
-        mStrategyAdapter.insert(items);
-    }
-
-    @Override
-    public void insert(int position, Collection<?> collection) {
-        mStrategyAdapter.insert(position, collection);
-    }
 
     //    public MultiTypeAdapter(Object... items) {
 //        mStrategyAdapter.display(Arrays.asList(items));
 //    }
 //
-    public void register(Class t, ViewBinder binder) {
-        mPool.register(t.hashCode(), binder);
-    }
+//    public void register(Class t, ViewBinder binder) {
+//        mPool.register(t.hashCode(), binder);
+//    }
 //
 //    public void register(int type, ViewBinder binder) {
 //        mPool.register(type, binder);
