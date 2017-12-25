@@ -6,6 +6,7 @@
 
         <import type="android.view.View" />
 
+        <import type="com.prayxiang.recyclerview.extension.tools.Status" />
         <variable
             name="data"
             type="com.prayxiang.recyclerview.extension.tools.LoaderMore" />
@@ -23,7 +24,7 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:visibility="@{data.loadMoreStatus!=data.STATUS_DEFAULT?View.GONE:View.VISIBLE}">
+            android:visibility="@{data.loadMoreStatus!=Status.STATUS_DEFAULT?View.GONE:View.VISIBLE}">
 
             <TextView
                 android:id="@+id/load_default_text"
@@ -41,7 +42,7 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:visibility="@{data.loadMoreStatus!=data.STATUS_FAIL?View.GONE:View.VISIBLE}">
+            android:visibility="@{data.loadMoreStatus!=Status.STATUS_FAIL?View.GONE:View.VISIBLE}">
 
             <TextView
                 android:layout_width="match_parent"
@@ -58,7 +59,7 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:visibility="@{data.loadMoreStatus!=data.STATUS_END?View.GONE:View.VISIBLE}">
+            android:visibility="@{data.loadMoreStatus!=Status.STATUS_END?View.GONE:View.VISIBLE}">
 
             <TextView
                 android:layout_width="match_parent"
@@ -75,7 +76,7 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:visibility="@{data.loadMoreStatus!=data.STATUS_SUCCESS?View.GONE:View.VISIBLE}">
+            android:visibility="@{data.loadMoreStatus!=Status.STATUS_SUCCESS?View.GONE:View.VISIBLE}">
 
             <TextView
                 android:layout_width="match_parent"
@@ -94,7 +95,7 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:visibility="@{data.loadMoreStatus!=data.STATUS_LOADING?View.GONE:View.VISIBLE}">
+            android:visibility="@{data.loadMoreStatus!=Status.STATUS_LOADING?View.GONE:View.VISIBLE}">
 
             <android.support.v4.widget.ContentLoadingProgressBar
                 android:id="@+id/progressWheel"

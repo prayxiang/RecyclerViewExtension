@@ -9,6 +9,10 @@ import com.prayxiang.recyclerview.extension.DataBoundViewHolder;
 import com.prayxiang.recyclerview.extension.LoadListener;
 import com.prayxiang.recyclerview.extension.R;
 
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_DEFAULT;
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_END;
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_LOADING;
+
 
 /**
  * Created by xianggaofeng on 2017/6/6.
@@ -57,9 +61,9 @@ public class LoaderMoreViewBinder extends SimpleViewBound<LoaderMore> {
     @Override
     public void onViewDetachedFromWindow(DataBoundViewHolder<ViewDataBinding> viewHolder) {
         LoaderMore more = viewHolder.getItem();
-        if (more.loadMoreStatus == LoaderMore.STATUS_LOADING) {
-        } else if (more.loadMoreStatus != LoaderMore.STATUS_END) {
-            more.setLoadMoreStatus(LoaderMore.STATUS_DEFAULT);
+        if (more.loadMoreStatus == STATUS_LOADING) {
+        } else if (more.loadMoreStatus != STATUS_END) {
+            more.setLoadMoreStatus(STATUS_DEFAULT);
         }
     }
 
