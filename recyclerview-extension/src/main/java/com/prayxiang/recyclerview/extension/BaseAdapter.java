@@ -117,6 +117,7 @@ public class BaseAdapter extends DataBoundAdapter {
             items.add(loaderMore);
             footOffset++;
         }
+        notifyDataSetChanged();
     }
 
 
