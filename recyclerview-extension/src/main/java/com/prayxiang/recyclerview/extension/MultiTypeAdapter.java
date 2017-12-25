@@ -137,7 +137,7 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        return mTypeStrategy.getItemViewType(position);
+        return mTypeStrategy.getItemViewType(getItem(position));
     }
 
 
