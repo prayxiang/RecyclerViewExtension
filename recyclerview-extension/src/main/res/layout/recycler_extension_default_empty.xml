@@ -100,7 +100,7 @@
 
             <android.support.v4.widget.ContentLoadingProgressBar
                 android:id="@+id/progressWheel"
-                style="@android:style/Widget.ProgressBar.Small"
+                style="@style/Widget.AppCompat.ProgressBar"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center" />

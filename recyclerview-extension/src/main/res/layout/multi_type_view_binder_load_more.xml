@@ -101,7 +101,7 @@
                 android:id="@+id/progressWheel"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                style="@android:style/Widget.ProgressBar.Small"
+                style="@style/Widget.AppCompat.ProgressBar"
                 android:layout_gravity="center" />
 
             <TextView
