@@ -112,7 +112,7 @@ public class TypeBuilder<T> {
             strategy = new TypeStrategy<T>() {
                 @Override
                 public int getItemViewType(Object item) {
-                    return getClass().hashCode();
+                    return item.getClass().hashCode();
                 }
             };
         }
