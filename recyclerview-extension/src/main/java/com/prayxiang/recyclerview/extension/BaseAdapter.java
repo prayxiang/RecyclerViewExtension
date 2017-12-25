@@ -23,8 +23,8 @@ import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_SUCCESS;
  * Created by prayxiang on 2017/11/24.
  */
 
-public class BaseAdapter extends MultiTypeAdapter {
-    private RecyclerView recyclerView;
+public class BaseAdapter extends DataBoundAdapter {
+
 
     private LoaderMore loaderMore = new LoaderMore();
     private LoadMoreScrollListener listener = new LoadMoreScrollListener(loaderMore);
@@ -44,7 +44,7 @@ public class BaseAdapter extends MultiTypeAdapter {
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        this.recyclerView = recyclerView;
+
         recyclerView.addOnScrollListener(listener);
 
     }
@@ -53,24 +53,10 @@ public class BaseAdapter extends MultiTypeAdapter {
     public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
         super.onDetachedFromRecyclerView(recyclerView);
         recyclerView.removeOnScrollListener(listener);
-        this.recyclerView = null;
+
     }
 
-    static final Object DB_PAYLOAD = new Object();
-    final OnRebindCallback mOnRebindCallback = new OnRebindCallback() {
-        @Override
-        public boolean onPreBind(ViewDataBinding binding) {
-            if (recyclerView == null || recyclerView.isComputingLayout()) {
-                return true;
-            }
-            int childAdapterPosition = recyclerView.getChildAdapterPosition(binding.getRoot());
-            if (childAdapterPosition == RecyclerView.NO_POSITION) {
-                return true;
-            }
-            notifyItemChanged(childAdapterPosition, DB_PAYLOAD);
-            return false;
-        }
-    };
+
 
 
     public void setLoadListener(LoadListener loadListener) {

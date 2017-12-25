@@ -33,7 +33,7 @@ public class DataBoundViewBinder<T, V extends ViewDataBinding> extends ViewBinde
     final public DataBoundViewHolder<V> onCreateViewHolder(LayoutInflater inflater, ViewGroup parent) {
         DataBoundViewHolder<V> vh = DataBoundViewHolder.create(parent, mLayoutId, component);
         onDataBoundCreated(vh);
-        BaseAdapter adapter = (BaseAdapter) this.adapter;
+        DataBoundAdapter adapter = (DataBoundAdapter) this.adapter;
         vh.binding.addOnRebindCallback(adapter.mOnRebindCallback);
         return vh;
     }
