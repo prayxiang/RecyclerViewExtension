@@ -37,15 +37,15 @@ public class LoaderMoreViewBinder extends SimpleViewBound<LoaderMore> {
 //        holder.findViewById(R.id.load_fail).setVisibility(View.GONE);
 //        holder.findViewById(R.id.load_finish).setVisibility(View.GONE);
 //        holder.findViewById(R.id.load_end).setVisibility(View.GONE);
-//        if (item.loadMoreStatus == LoaderMore.STATUS_LOADING) {
+//        if (item.status == LoaderMore.STATUS_LOADING) {
 //            holder.findViewById(R.id.load_loading).setVisibility(View.VISIBLE);
-//        } else if (item.loadMoreStatus == LoaderMore.STATUS_SUCCESS) {
+//        } else if (item.status == LoaderMore.STATUS_SUCCESS) {
 //            holder.findViewById(R.id.load_finish).setVisibility(View.VISIBLE);
-//        } else if (item.loadMoreStatus == LoaderMore.STATUS_DEFAULT) {
+//        } else if (item.status == LoaderMore.STATUS_DEFAULT) {
 //            holder.findViewById(R.id.load_default).setVisibility(View.VISIBLE);
-//        } else if (item.loadMoreStatus == LoaderMore.STATUS_FAIL) {
+//        } else if (item.status == LoaderMore.STATUS_FAIL) {
 //            holder.findViewById(R.id.load_fail).setVisibility(View.VISIBLE);
-//        }else if(item.loadMoreStatus==LoaderMore.S)
+//        }else if(item.status==LoaderMore.S)
 //    }
 
 

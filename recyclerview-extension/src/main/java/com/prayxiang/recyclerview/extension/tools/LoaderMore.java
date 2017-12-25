@@ -7,16 +7,17 @@ import android.view.View;
 import com.prayxiang.recyclerview.extension.BR;
 import com.prayxiang.recyclerview.extension.LoadListener;
 
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_DEFAULT;
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_END;
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_LOADING;
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_SUCCESS;
+
 
 /**
  * Created by xianggaofeng on 2017/6/6.
  */
 public class LoaderMore extends BaseObservable {
-    public static final int STATUS_DEFAULT = 0;
-    public static final int STATUS_SUCCESS = 1;
-    public static final int STATUS_LOADING = 2;
-    public static final int STATUS_FAIL = 3;
-    public static final int STATUS_END = 4;
+
     @Bindable
     public int loadMoreStatus = STATUS_DEFAULT;
     public boolean loadMoreEndGone = false;
@@ -77,9 +78,9 @@ public class LoaderMore extends BaseObservable {
         this.loadListener = loadListener;
     }
     public void onClick() {
-        if (loadMoreStatus != LoaderMore.STATUS_END && loadMoreStatus != LoaderMore.STATUS_LOADING && isActive()) {
+        if (loadMoreStatus != STATUS_END && loadMoreStatus != STATUS_LOADING && isActive()) {
             if (loadListener != null) {
-                setLoadMoreStatus(LoaderMore.STATUS_LOADING);
+                setLoadMoreStatus(STATUS_LOADING);
                 loadListener.load(currentPage);
             }
         }

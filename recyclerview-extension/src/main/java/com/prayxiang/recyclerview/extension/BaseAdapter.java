@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_END;
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_FAIL;
+import static com.prayxiang.recyclerview.extension.tools.Status.STATUS_SUCCESS;
+
 /**
  * Created by prayxiang on 2017/11/24.
  */
@@ -71,6 +75,7 @@ public class BaseAdapter extends MultiTypeAdapter {
 
     public void setLoadListener(LoadListener loadListener) {
         loaderMore.setLoadListener(loadListener);
+        empty.setLoadListener(loadListener);
     }
 
 
@@ -84,7 +89,11 @@ public class BaseAdapter extends MultiTypeAdapter {
 
 
     public void loadFail() {
-        loaderMore.setLoadMoreStatus(LoaderMore.STATUS_FAIL);
+        if (empty.isActive()) {
+            empty.setLoadStatus(STATUS_FAIL);
+        } else {
+            loaderMore.setLoadMoreStatus(STATUS_FAIL);
+        }
     }
 
 
@@ -107,9 +116,11 @@ public class BaseAdapter extends MultiTypeAdapter {
     public void replace(Collection<?> collection) {
         loaderMore.reset();
         clear();
+        empty.setActive(false);
         footOffset = 0;
         if (collection.size() == 0) {
             if (enableEmpty) {
+                empty.setActive(true);
                 items.add(empty);
                 return;
             }
@@ -131,11 +142,11 @@ public class BaseAdapter extends MultiTypeAdapter {
     public void insert(Collection<?> collection) {
         if (collection == null) {
             collection = Collections.emptyList();
-            loaderMore.setLoadMoreStatus(LoaderMore.STATUS_FAIL);
+            loaderMore.setLoadMoreStatus(STATUS_FAIL);
         } else if (collection.size() < limit) {
-            loaderMore.setLoadMoreStatus(LoaderMore.STATUS_END);
+            loaderMore.setLoadMoreStatus(STATUS_END);
         } else {
-            loaderMore.setLoadMoreStatus(LoaderMore.STATUS_SUCCESS);
+            loaderMore.setLoadMoreStatus(STATUS_SUCCESS);
         }
         items.addAll(items.size() - footOffset, collection);
         notifyItemRangeInserted(items.size() - footOffset, collection.size());

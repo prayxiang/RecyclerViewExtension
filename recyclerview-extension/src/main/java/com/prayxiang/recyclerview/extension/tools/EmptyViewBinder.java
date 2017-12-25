@@ -75,6 +75,7 @@ public class EmptyViewBinder extends ItemViewBinder<Empty, ItemViewHolder> {
 
         Log.d("xgf5", "onViewAttachedToWindow: " + viewHolder.getItem());
 
+
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
         int extent = 0;
         if (manager instanceof LinearLayoutManager) {
