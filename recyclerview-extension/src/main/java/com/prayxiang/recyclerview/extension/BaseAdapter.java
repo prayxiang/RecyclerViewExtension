@@ -57,8 +57,6 @@ public class BaseAdapter extends DataBoundAdapter {
     }
 
 
-
-
     public void setLoadListener(LoadListener loadListener) {
         loaderMore.setLoadListener(loadListener);
         empty.setLoadListener(loadListener);
@@ -108,6 +106,7 @@ public class BaseAdapter extends DataBoundAdapter {
             if (enableEmpty) {
                 empty.setActive(true);
                 items.add(empty);
+                notifyDataSetChanged();
                 return;
             }
         }
