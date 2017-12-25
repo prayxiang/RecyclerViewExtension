@@ -158,7 +158,7 @@ public class BaseAdapter extends DataBoundAdapter {
 
 
     public void clear() {
-        for (int i = items.size() - footOffset - 1; i >= fixedOffset; i--) {
+        for (int i = items.size() - 1; i >= fixedOffset; i--) {
             items.remove(i);
         }
     }
