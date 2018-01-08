@@ -145,16 +145,19 @@ public class BaseAdapter extends DataBoundAdapter {
     @Override
     public void insert(int position, Collection<?> collection) {
         items.addAll(position + fixedOffset, collection);
+        this.notifyDataSetChanged();
     }
 
     @Override
     public void insert(Object object) {
         items.add( fixedOffset,object);
+        this.notifyDataSetChanged();
     }
 
     @Override
     public void insert(int position, Object object) {
-        super.insert(position+fixedOffset, object);
+        items.add(position+fixedOffset, object);
+        this.notifyDataSetChanged();
     }
 
     @Override
