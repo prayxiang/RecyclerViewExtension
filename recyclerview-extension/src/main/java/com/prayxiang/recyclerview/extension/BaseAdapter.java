@@ -138,9 +138,23 @@ public class BaseAdapter extends DataBoundAdapter {
         notifyItemRangeInserted(items.size() - footOffset, collection.size());
     }
 
+
+
+
+
     @Override
     public void insert(int position, Collection<?> collection) {
         items.addAll(position + fixedOffset, collection);
+    }
+
+    @Override
+    public void insert(Object object) {
+        items.add( fixedOffset,object);
+    }
+
+    @Override
+    public void insert(int position, Object object) {
+        super.insert(position+fixedOffset, object);
     }
 
     @Override

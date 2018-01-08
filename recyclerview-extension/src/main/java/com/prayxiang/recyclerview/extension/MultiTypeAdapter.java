@@ -89,6 +89,12 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<ViewHolder> {
         throw new RuntimeException("unSupport operation");
     }
 
+    public void insert(int position, Object object) {
+        throw new RuntimeException("unSupport operation");
+    }
+    public void insert(Object object){
+        throw new RuntimeException("unSupport operation");
+    }
 
     public void display(Collection<?> collection) {
         replace(collection);

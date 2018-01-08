@@ -59,4 +59,24 @@ public class DataBoundAdapter extends MultiTypeAdapter {
         }
     };
 
+
+    @Override
+    public void insert(Object object) {
+        items.add(object);
+    }
+
+    @Override
+    public void insert(Collection<?> collection) {
+        items.addAll(collection);
+    }
+
+    @Override
+    public void insert(int position, Object object) {
+        items.add(position,object);
+    }
+
+    @Override
+    public void insert(int position, Collection<?> collection) {
+        items.addAll(position,collection);
+    }
 }
